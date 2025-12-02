@@ -10,8 +10,11 @@ type Book struct {
 
 // Stock は図書館の在庫
 type Stock struct {
-	book *Book
+	books []*Book
 }
+
+// Lend は本を貸し出します
+func (s *Stock) Lend(book *StockedBook) *BorrowedBook { return nil }
 
 // StockedBookID は Stock に保存されている Book を識別するための ID
 type StockedBookID string
@@ -30,7 +33,6 @@ type BorrowedBook struct {
 	id   BorrowedBookID
 	book *Book
 }
-
 
 // BorrowerID は本を借りる人の識別するための ID
 type BorrowerID string
