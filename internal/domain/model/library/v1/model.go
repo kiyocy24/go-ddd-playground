@@ -10,7 +10,7 @@ type Book struct {
 
 // Stock は図書館の在庫
 type Stock struct {
-	books []*Book
+	books []*StockedBook
 }
 
 // Lend は本を貸し出します
