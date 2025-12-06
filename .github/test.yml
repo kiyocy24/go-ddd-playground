@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+      actions: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v5
+      with:
+        go-version: go.mod
+    - name: Build
+      run: go build -v ./...
+    - name: Test
+      run: go test -v ./... -coverprofile=coverage.out
+    - uses: k1LoW/octocov-action@v1
